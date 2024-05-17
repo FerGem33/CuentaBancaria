@@ -9,7 +9,6 @@ public class ManejoDeCuentas{
         System.out.println("Ingrese la ruta del archivo.");
         CreacionCuentas cc = new CreacionCuentas(sc.next());
 
-
         String menu = """
                 
                 Menú:
@@ -36,7 +35,7 @@ public class ManejoDeCuentas{
             switch(o) {
                 case 1-> cc.crearCuentas();
                 case 2-> cc.depositar();
-                case 3 -> cc.retirar();
+                case 3 -> cc.retiro();
                 case 4 -> cc.consultarCuentas();
                 case 5 -> cc.buscarCuenta();
             }

@@ -12,7 +12,7 @@ public class Cuenta implements Serializable{
         this.saldo0 = saldo0;
         this.saldo = saldo0;
     }
-    public int getNumero() {
+    public int getNumCuenta() {
         return num;
     }
     public void setNumero(int num) {
@@ -24,16 +24,19 @@ public class Cuenta implements Serializable{
     public void setTitular(String titular) {
         this.titular = titular;
     }
+    public double getSaldoInicial(){
+        return saldo0;
+    }
     public double getSaldo() {
         return saldo;
     }
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
-    public void depositar(double monto){
+    public void deposito(double monto){
         saldo += monto;
     }
-    public void retirar(double monto){
+    public void retiro(double monto){
         if(saldo >= monto){
             saldo -= monto;
             System.out.println("Retiro realizado exitosamente.");
