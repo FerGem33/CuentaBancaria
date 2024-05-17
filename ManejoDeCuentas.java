@@ -13,12 +13,12 @@ public class ManejoDeCuentas{
         String menu = """
                 
                 Menú:
-                0.Terminar
                 1.Crear cuentas
                 2.Depositar
                 3.Retirar
                 4.Consultar cuentas
                 5.Consultar una cuenta
+                6.Terminar
                 
                 """;
         int o;
@@ -34,12 +34,12 @@ public class ManejoDeCuentas{
                 }
             }
             switch(o) {
-                case 1-> cc.crearCuentas();
-                case 2-> cc.depositar();
+                case 1 -> cc.crearCuentas();
+                case 2 -> cc.depositar();
                 case 3 -> cc.retirar();
                 case 4 -> cc.consultarCuentas();
                 case 5 -> cc.buscarCuenta();
             }
-        } while(o != 0);
+        } while(o != 6);
     }
 }

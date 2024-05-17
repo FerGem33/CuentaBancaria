@@ -151,16 +151,16 @@ public class CreacionCuentas implements Serializable{
     }
     public void buscarCuenta() throws IOException, ClassNotFoundException{
         File f = new File(archivo);
-        FileInputStream fis = new FileInputStream(f);
-        ObjectInputStream ois = new ObjectInputStream(fis);
         Scanner sc = new Scanner(System.in);
-        int num = 1;
+
 
         do{
-            num = readInt(sc,"Cuenta a consultar, [0] para terminar.");
+            int num = readInt(sc,"\nCuenta a consultar, [0] para terminar.");
             if(num == 0){
                 break;
             }
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
             boolean continuar = true, encontrado = false;
 
             do {
@@ -177,7 +177,7 @@ public class CreacionCuentas implements Serializable{
             if(!encontrado) {
                 System.out.println("No se encontró la cuenta.");
             }
+            ois.close();
         } while(true);
-        ois.close();
     }
 }
