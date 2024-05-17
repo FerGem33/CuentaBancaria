@@ -147,53 +147,37 @@ public class CreacionCuentas
         File archivoEntrada = new File (nombreArchivo);
         FileInputStream flujoEntrada = new FileInputStream(archivoEntrada);
         ObjectInputStream archivoObjetos = new ObjectInputStream (flujoEntrada);
-
-        int numCuenta = 1;
-        boolean continuar, encontro;
-        while (numCuenta > 0)
+        boolean continuar = true;
+        do
         {
-            numCuenta = Integer.parseInt(JOptionPane.showInputDialog("Numero de la cuenta o cero para terminar"));
-
-            if(numCuenta > 0)
+            try
             {
-                continuar = true;
-                encontro = false;
-                do
-                {
-                    try
-                    {
-                        Cuenta unaCuenta = (Cuenta)archivoObjetos.readObject();
-                        JOptionPane.showMessageDialog(null , " Numero de Cuenta " + unaCuenta.getNumCuenta() +
-                                "\nTitular "         + unaCuenta.getTitular() +
-                                "\nSaldo Inicial "   + unaCuenta.getSaldoInicial() +
-                                "\n Saldo Actual "   + unaCuenta.getSaldo());
-                    }
-                    catch (EOFException e)
-                    {
-                        continuar = false;
-                    }
-                }while (continuar);
-                if(encontro == false)
-                {
-                    JOptionPane.showMessageDialog (null,"No se encontro el numero de cuenta " + numCuenta);
-                    continuar = false;
-                }
-                archivoObjetos.close();
+                Cuenta unaCuenta = (Cuenta)archivoObjetos.readObject();
+                JOptionPane.showMessageDialog(null , " Numero de Cuenta " + unaCuenta.getNumCuenta() +
+                        "\nTitular "         + unaCuenta.getTitular() +
+                        "\nSaldo Inicial "   + unaCuenta.getSaldoInicial() +
+                        "\n Saldo Actual "   + unaCuenta.getSaldo());
             }
-        }
+            catch (EOFException e)
+            {
+                continuar = false;
+            }
+        } while (continuar);
+        archivoObjetos.close();
     }
 
     public void buscarCuenta() throws FileNotFoundException, IOException, ClassNotFoundException
     {
         File archivoEntrada = new File (nombreArchivo);
         FileInputStream flujoEntrada = new FileInputStream(archivoEntrada);
-        ObjectInputStream archivoObjetos = new ObjectInputStream (flujoEntrada);
+
 
         int numCuenta = 1;
         boolean encontro, continuar;
         while (numCuenta > 0) {
             numCuenta = Integer.parseInt(JOptionPane.showInputDialog("Numero de la cuenta o cero para terminar"));
             if (numCuenta > 0) {
+                ObjectInputStream archivoObjetos = new ObjectInputStream (flujoEntrada);
                 continuar = true;
                 encontro = false;
                 do {
